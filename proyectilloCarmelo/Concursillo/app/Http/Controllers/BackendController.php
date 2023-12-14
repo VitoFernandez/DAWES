@@ -49,6 +49,11 @@ class BackendController extends Controller
         return view('backend.index', ['preguntas' => $preguntas, 'respuestasPorPregunta' => $respuestasPorPregunta]);
         
     }
+    
+    public function home()
+    {
+        return view('home.index');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -197,22 +202,15 @@ class BackendController extends Controller
      */
     public function destroy(Pregunta $pregunta)
     {
-        
          try {
-            
+            $id = $pregunta->id;
             $pregunta = Pregunta::findOrFail($id);
             $respuestas = Respuesta::where('pregunta_id', $id)->get();
-             
-            $respuestas->delete();
-            return redirect('backend/view')->with(['message' => 'La pregunta se ha borrado correctamente.']);
+            $pregunta->delete();
+            return redirect('/view')->with(['message' => 'La pregunta se ha borrado correctamente.']);
         } catch(\Exception $e) {
             return back()->withErrors(['message' => 'Ha ocurrido un error.']);
         }
     }
-    function view(Request $request, $id) {
-        $pregunta  = Pregunta::find($id);
-        if ($pregunta == null) {
-            return abort(404);
-        }
-    }
+    
 }

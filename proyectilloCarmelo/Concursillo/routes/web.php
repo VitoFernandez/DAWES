@@ -17,19 +17,23 @@ use App\Http\Controllers\sesionController;
 |
 */
 
-Route::get('home', function () {
-    return view('home.index');
-});
-
-Route::get('frontend/create', function () {
-    return view('frontend.create');
-});
 
 
-Route::Delete('/pregunta/{pregunta}', [BackendController::class, 'destroy']);
-Route::get('backend/view', [BackendController::class, 'viewContent']);
+/* sesionController */
 Route::get('/', [sesionController::class, 'singin'])->name('/');
 Route::post('/login', [sesionController::class, 'login'])->name('login');
+
+/* LogController */
 Route::resource('singin', LogController::class);
+
+/* BackendController */
+Route::Delete('/backend/{pregunta}', [BackendController::class, 'destroy']);
 Route::resource('backend', BackendController::class);
+Route::get('view', [BackendController::class, 'viewContent']);
+Route::get('home', [BackendController::class, 'home']);
+
+
+/* FrontendController */
 Route::resource('frontend', FrontendController::class);
+Route::get('frontent/create', [FrontendController::class, 'create']);
+

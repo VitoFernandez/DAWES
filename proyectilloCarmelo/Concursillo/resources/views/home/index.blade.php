@@ -20,7 +20,7 @@
           <h5 class="card-title">Consultar Preguntas</h5>
           <p class="card-text">Ver todas las preguntas para editarlas, eliminarlas o consultarlas</p>
           
-          <a href="{{ url('backend/view')}}" class="btn btn-primary">Consultar</a>
+          <a href="{{ url('/view')}}" class="btn btn-primary">Consultar</a>
         </div>
       </div>
     </div>
