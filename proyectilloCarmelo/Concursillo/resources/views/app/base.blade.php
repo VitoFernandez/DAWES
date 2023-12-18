@@ -484,6 +484,25 @@
     }
   </script>
   <!-- Github buttons -->
+  
+  <script>
+  const forms = document.querySelectorAll(".formDelete");
+  forms.forEach(function(form) {
+      form.onsubmit = (event) => {
+        return confirm('Seguro que quieres borrar ' + event.target.dataset.pregunta + '?');
+      };
+  });
+  </script>
+  <script>
+  const forms = document.getElementById("formDel");
+  forms.forEach(function(form) {
+      form.onsubmit = (event) => {
+        return confirm('Seguro que quieres borrar ' + event.target.dataset.pregunta + '?');
+      };
+  });
+  </script>
+  
+  
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="./tpl/assets/js/material-dashboard.min.js?v=3.0.0"></script>
